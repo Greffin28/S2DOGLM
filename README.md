@@ -22,7 +22,6 @@ Here are the list of the class and functions:
     - `getMatrixBuffer()` *Return a FloatBuffer containing the matrix values.*
     - `getMatrix()` *Return a float[] containing the matrix values.*
     - `printMatrix()` *Simply print the values to the console.*
-> To use ---Matrix(...) (Yep, static functions) -> Matrix mat = Matrix.---Matrix(...);
 2. Vec4.java
   * Constructor
     - `Vec4()` *Create a vector with (x, y, z, w) = (0, 0, 0, 1).*
@@ -32,6 +31,8 @@ Here are the list of the class and functions:
     - `transform(Matrix mat)` *Simply multiply a matrix with the vector.*
     - `printVector()` *Simply print the values to the console.*
     - `getVector()` *Return a float[] containing the values (x, y, z, w).*
+
+> To use ---Matrix(...) (Yep, static functions) -> Matrix mat = Matrix.---Matrix(...);
 
 ### To do list
 - [x] Translation
