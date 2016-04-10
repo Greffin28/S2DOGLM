@@ -1,5 +1,9 @@
 package org.s2doglm.matrix;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+
 public class Matrix {
 
 	private float[] mat;
@@ -100,6 +104,15 @@ public class Matrix {
 		});
 		mat.transpose();
 		return mat;
+	}
+	
+	public FloatBuffer getMatrixBuffer() {
+		ByteBuffer byteBuffer = ByteBuffer.allocateDirect(mat.length * Float.BYTES);
+		byteBuffer.order(ByteOrder.nativeOrder());
+		FloatBuffer floatBuffer = byteBuffer.asFloatBuffer();
+		floatBuffer.put(mat);
+		floatBuffer.flip();
+		return floatBuffer;
 	}
 	
 	public float[] getMatrix() {
