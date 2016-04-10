@@ -35,21 +35,6 @@ public class Matrix {
 		}
 	}
 	
-	public void translate(float X, float Y) {
-		float[] trans = translationMatrix(X, Y).getMatrix();
-		float[] tempmat = new float[4 * 4];
-		for (int y = 0; y < 4; y++) {
-			for (int x = 0; x < 4; x++) {
-				tempmat[x + y * 4] = mat[x + y * 4];
-			}	
-		}
-		for (int y = 0; y < 4; y++) {
-			for (int x = 0; x < 4; x++) {
-				mat[x + y * 4] = 0;
-			}
-		}
-	}
-	
 	public static Matrix translationMatrix(float X, float Y) {
 		Matrix mat = new Matrix(new float[] {
 				1.0f, 0.0f, 0.0f, X,
@@ -66,6 +51,7 @@ public class Matrix {
 	}
 	
 	public void printMatrix() {
+		System.out.println("----------");
 		for (int y = 0; y < 4; y++) {
 			System.out.println(mat[0 + y * 4] + ", " + mat[1 + y * 4] + ", " + mat[2 + y * 4] + ", " + mat[3 + y * 4]);
 		}
