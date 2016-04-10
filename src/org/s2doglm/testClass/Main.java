@@ -5,7 +5,7 @@ import org.s2doglm.matrix.*;
 public class Main {
 	
 	public Main() {
-		Matrix mat = Matrix.translate(100.0f, 50.0f);
+		Matrix mat = Matrix.translationMatrix(100.0f, 50.0f);
 		
 		mat.printMatrix();
 	}
