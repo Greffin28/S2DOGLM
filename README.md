@@ -7,6 +7,7 @@ Anyway, i **believe** there's a better library out there somewhere. I made this 
 
 ## Contents
 Here are the list of the class and functions:
+
 1. Matrix.java
   * Constructor
     - `Matrix()` *Create a identity matrix.*
