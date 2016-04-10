@@ -5,13 +5,8 @@ import org.s2doglm.matrix.*;
 public class Main {
 	
 	public Main() {
-		Matrix mat = new Matrix(new float[] {
-				1.0f, 7.0f, 0.0f, 1.0f,
-				0.0f, 1.0f, 5.0f, 2.0f,
-				0.0f, 0.0f, 1.0f, 3.0f,
-				0.0f, 0.0f, 0.0f, 1.0f
-		});
-		mat.transpose();
+		Matrix mat = Matrix.translate(100.0f, 50.0f);
+		
 		mat.printMatrix();
 	}
 	

@@ -35,6 +35,17 @@ public class Matrix {
 		}
 	}
 	
+	public static Matrix translate(float X, float Y) {
+		Matrix mat = new Matrix(new float[] {
+				1.0f, 0.0f, 0.0f, X,
+				0.0f, 1.0f, 0.0f, Y,
+				0.0f, 0.0f, 1.0f, 0.0f,
+				0.0f, 0.0f, 0.0f, 1.0f
+		});
+		mat.transpose();
+		return mat;
+	}
+	
 	public float[] getMatrix() {
 		return mat;
 	}
