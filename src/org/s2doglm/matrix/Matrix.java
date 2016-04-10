@@ -22,7 +22,27 @@ public class Matrix {
 	}
 	
 	public void transpose() {
-		
+		float[] tempmat = new float[4 * 4];
+		for (int y = 0; y < 4; y++) {
+			for (int x = 0; x < 4; x++) {
+				tempmat[x + y * 4] = mat[x + y * 4];
+			}	
+		}
+		for (int y = 0; y < 4; y++) {
+			for (int x = 0; x < 4; x++) {
+				mat[x + y * 4] = tempmat[y + x * 4];
+			}	
+		}
+	}
+	
+	public float[] getMatrix() {
+		return mat;
+	}
+	
+	public void printMatrix() {
+		for (int y = 0; y < 4; y++) {
+			System.out.println(mat[0 + y * 4] + ", " + mat[1 + y * 4] + ", " + mat[2 + y * 4] + ", " + mat[3 + y * 4]);
+		}
 	}
 	
 }
