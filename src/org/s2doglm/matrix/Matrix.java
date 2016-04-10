@@ -35,10 +35,21 @@ public class Matrix {
 		}
 	}
 	
-	public static Matrix oDilationMatrix(float X, float Y) {
+	public static Matrix dilationMatrix(float X, float Y, float SX, float SY) {
 		Matrix mat = new Matrix(new float[] {
-				X, 0.0f, 0.0f, 0.0f,
-				0.0f, Y, 0.0f, 0.0f,
+				SX, 0.0f, 0.0f, X * (1 - SX),
+				0.0f, SY, 0.0f, Y * (1 - SY),
+				0.0f, 0.0f, 1.0f, 0.0f,
+				0.0f, 0.0f, 0.0f, 1.0f
+		});
+		mat.transpose();
+		return mat;
+	}
+	
+	public static Matrix oDilationMatrix(float SX, float SY) {
+		Matrix mat = new Matrix(new float[] {
+				SX, 0.0f, 0.0f, 0.0f,
+				0.0f, SY, 0.0f, 0.0f,
 				0.0f, 0.0f, 1.0f, 0.0f,
 				0.0f, 0.0f, 0.0f, 1.0f
 		});
