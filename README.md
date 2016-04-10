@@ -1,5 +1,7 @@
 # Simple 2D OpenGL Matrix (S2DOGLM)
 
+###### Still on-going!
+
 ## What exactly is S2DOGLM?
 Simple 2D OpenGL Matrix or S2DOGLM. Created to help me to use matrix for 2D OpenGL in **Java**.
 This is for my personal use only, but feel free to use it if you want to.
@@ -33,7 +35,9 @@ Here are the list of the class and functions:
     - `printVector()` *Simply print the values to the console.*
     - `getVector()` *Return a float[] containing the values (x, y, z, w).*
 
-> To use ---Matrix(...) (Yep, static functions) -> Matrix mat = Matrix.---Matrix(...);
+> To create a matrix you can do the followings:
+>   - Matrix mat = new Matrix(...); or
+>   - Matrix mat = Matrix.---Matrix(...); (Yep, static functions)
 
 ### To do list
 - [x] Translation
