@@ -35,6 +35,17 @@ public class Matrix {
 		}
 	}
 	
+	public static Matrix rotationMatrix(float X, float Y, float ang) {
+		Matrix mat = new Matrix(new float[] {
+				(float) Math.cos(ang)	, (float) -Math.sin(ang), 0.0f, (float) (-X * Math.cos(ang) + Y * Math.sin(ang) + X),
+				(float) Math.sin(ang)	, (float) Math.cos(ang)	, 0.0f, (float) (-X * Math.sin(ang) - Y * Math.cos(ang) + Y),
+				0.0f					, 0.0f					, 1.0f, 0.0f,
+				0.0f					, 0.0f					, 0.0f, 1.0f
+		});
+		mat.transpose();
+		return mat;
+	}
+	
 	public static Matrix oRotationMatrix(float ang) {
 		Matrix mat = new Matrix(new float[] {
 				(float) Math.cos(ang)	, (float) -Math.sin(ang), 0.0f, 0.0f,

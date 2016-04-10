@@ -14,7 +14,7 @@ public class Vec4 {
 		vec = new float[] {x, y, 0.0f, 1.0f};
 	}
 	
-	public Vec4(float x, float y, float z) {
+	public Vec4(float x, float y, float z) { //Probably useless as this is going to be used for 2D.
 		vec = new float[] {x, y, z, 1.0f};
 	}
 	
