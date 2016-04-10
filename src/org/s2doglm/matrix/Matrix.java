@@ -35,6 +35,18 @@ public class Matrix {
 		}
 	}
 	
+	public static Matrix simpleOrtho(float t, float l, float b, float r) {
+		Matrix mat = new Matrix(new float[] {
+				2 / (r - l), 0.0f, 0.0f, -(r + l) / (r - l),
+				0.0f, -2 / (b - t), 0.0f, (b + t) / (b - t),
+				0.0f, 0.0f, 1.0f, 0.0f,
+				0.0f, 0.0f, 0.0f, 1.0f
+		});
+		
+		mat.transpose();
+		return mat;
+	}
+	
 	public static Matrix rotationMatrix(float X, float Y, float ang) {
 		Matrix mat = new Matrix(new float[] {
 				(float) Math.cos(ang)	, (float) -Math.sin(ang), 0.0f, (float) (-X * Math.cos(ang) + Y * Math.sin(ang) + X),
