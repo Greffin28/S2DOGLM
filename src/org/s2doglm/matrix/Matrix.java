@@ -4,10 +4,32 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
+/**
+ * <h1>S2DOGLM - Simple 2D OpenGL Matrix</h1>
+ * <h3>About S2DOGLM</h3>
+ * Created to help me use matrix for 2D OpenGL.</br>
+ * Containing several simple functions which doesn't contain anything related to Z axis.</br>
+ * Or at least for now..
+ * </br></br>
+ * <h3>About this class</h3>
+ * Contain several simple functions like creating matrix for:
+ * <ul>
+ * 	<li>Translation</li>
+ * 	<li>Dilation</li>
+ * 	<li>Rotation</li>
+ * 	<li>Orthogonal projection</li>
+ * </ul>
+ * </br></br>
+ * @author Greffin28
+ * @see {@link org.s2doglm.vector Vec4}
+ */
 public class Matrix {
 
 	private float[] mat;
 	
+	/**
+	 * Calling Matrix() will create an <b>identity</b> matrix.
+	 */
 	public Matrix() {
 		mat = new float[]{
 			1.0f, 0.0f, 0.0f, 0.0f,
@@ -17,6 +39,10 @@ public class Matrix {
 		};
 	}
 	
+	/**
+	 * Calling Matrix(float[] f) will create a matrix with the given float array.
+	 * The float array must be 4 * 4 in size in <b>column major</b> orientation.
+	 */
 	public Matrix(float[] f) {
 		if (f.length != 4 * 4) {
 			System.err.println("Matrix should be in the form of 4x4");
@@ -25,6 +51,9 @@ public class Matrix {
 		mat = f;
 	}
 	
+	/**
+	 * Calling transpose() will transpose the current matrix.
+	 */
 	public void transpose() {
 		float[] tempmat = new float[4 * 4];
 		for (int y = 0; y < 4; y++) {
@@ -39,6 +68,18 @@ public class Matrix {
 		}
 	}
 	
+	/**
+	 * Simple orthogonal matrix which doesn't interfere with Z axis.</br></br>
+	 * Example of use:</br>
+	 * {@code Matrix mat = Matrix.simpleOrtho(0, 0, 600, 800);}
+	 * </br></br>
+	 * @param t Top side.
+	 * @param l Left side.
+	 * @param b Bottom side.
+	 * @param r Right side.
+	 * 
+	 * @return {@link org.s2doglm.matrix.Matrix Matrix}
+	 */
 	public static Matrix simpleOrtho(float t, float l, float b, float r) {
 		Matrix mat = new Matrix(new float[] {
 				2 / (r - l), 0.0f, 0.0f, -(r + l) / (r - l),
@@ -51,6 +92,17 @@ public class Matrix {
 		return mat;
 	}
 	
+	/**
+	 * Rotation matrix relative to (X, Y).</br></br>
+	 * Example of use:</br>
+	 * {@code Matrix mat = Matrix.rotationMatrix(1.0f, 10.0f, (float) Math.toRadians(90));}
+	 * </br></br>
+	 * @param X Horizontal coordinate of the rotation point.
+	 * @param Y Vertical coordinate of the rotation point.
+	 * @param ang Angle of rotation in <b>radians</b>.
+	 * 
+	 * @return {@link org.s2doglm.matrix.Matrix Matrix}
+	 */
 	public static Matrix rotationMatrix(float X, float Y, float ang) {
 		Matrix mat = new Matrix(new float[] {
 				(float) Math.cos(ang)	, (float) -Math.sin(ang), 0.0f, (float) (-X * Math.cos(ang) + Y * Math.sin(ang) + X),
@@ -62,6 +114,15 @@ public class Matrix {
 		return mat;
 	}
 	
+	/**
+	 * Rotation matrix relative to Origin(0, 0).</br></br>
+	 * Example of use:</br>
+	 * {@code Matrix mat = Matrix.oRotationMatrix((float) Math.toRadians(90));}
+	 * </br></br>
+	 * @param ang Angle of rotation in <b>radians</b>.
+	 * 
+	 * @return {@link org.s2doglm.matrix.Matrix Matrix}
+	 */
 	public static Matrix oRotationMatrix(float ang) {
 		Matrix mat = new Matrix(new float[] {
 				(float) Math.cos(ang)	, (float) -Math.sin(ang), 0.0f, 0.0f,
@@ -73,6 +134,18 @@ public class Matrix {
 		return mat;
 	}
 	
+	/**
+	 * Dilation matrix relative to (X, Y).</br></br>
+	 * Example of use:</br>
+	 * {@code Matrix mat = Matrix.dilationMatrix(1.0f, 10.0f, 2.0f, 3.0f);}
+	 * </br></br>
+	 * @param X Horizontal coordinate of the dilation point.
+	 * @param Y Vertical coordinate of the dilation point.
+	 * @param SX Horizontal scale.
+	 * @param SY Vertical scale.
+	 * 
+	 * @return {@link org.s2doglm.matrix.Matrix Matrix}
+	 */
 	public static Matrix dilationMatrix(float X, float Y, float SX, float SY) {
 		Matrix mat = new Matrix(new float[] {
 				SX	, 0.0f	, 0.0f, X * (1 - SX),
@@ -84,6 +157,16 @@ public class Matrix {
 		return mat;
 	}
 	
+	/**
+	 * Dilation matrix relative to Origin(0, 0).</br></br>
+	 * Example of use:</br>
+	 * {@code Matrix mat = Matrix.oDilationMatrix(2.0f, 3.0f);}
+	 * </br></br>
+	 * @param SX Horizontal scale.
+	 * @param SY Vertical scale.
+	 * 
+	 * @return {@link org.s2doglm.matrix.Matrix Matrix}
+	 */
 	public static Matrix oDilationMatrix(float SX, float SY) {
 		Matrix mat = new Matrix(new float[] {
 				SX	, 0.0f	, 0.0f, 0.0f,
@@ -95,6 +178,16 @@ public class Matrix {
 		return mat;
 	}
 	
+	/**
+	 * Translation matrix.</br></br>
+	 * Example of use:</br>
+	 * {@code Matrix mat = Matrix.translationMatrix(5.0f, 10.0f);}
+	 * </br></br>
+	 * @param X Horizontal increment/decrement.
+	 * @param Y Vertical increment/decrement.
+	 * 
+	 * @return {@link org.s2doglm.matrix.Matrix Matrix}
+	 */
 	public static Matrix translationMatrix(float X, float Y) {
 		Matrix mat = new Matrix(new float[] {
 				1.0f, 0.0f, 0.0f, X,
@@ -106,6 +199,11 @@ public class Matrix {
 		return mat;
 	}
 	
+	/**
+	 * Used to get the current matrix values as a FloatBuffer.</br></br>
+	 * </br></br>
+	 * @return {@link java.nio.FloatBuffer FloatBuffer}
+	 */
 	public FloatBuffer getMatrixBuffer() {
 		ByteBuffer byteBuffer = ByteBuffer.allocateDirect(mat.length * Float.BYTES);
 		byteBuffer.order(ByteOrder.nativeOrder());
@@ -115,10 +213,18 @@ public class Matrix {
 		return floatBuffer;
 	}
 	
+	/**
+	 * Used to get the current matrix values as a float array.</br></br>
+	 * </br></br>
+	 * @return {@link java.nio.FloatBuffer FloatBuffer}
+	 */
 	public float[] getMatrix() {
 		return mat;
 	}
 	
+	/**
+	 * Used to simply print the matrix values to the console.
+	 */
 	public void printMatrix() {
 		System.out.println("----------");
 		for (int y = 0; y < 4; y++) {
