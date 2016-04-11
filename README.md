@@ -43,5 +43,5 @@ Here are the list of the class and functions:
 - [x] Translation
 - [x] Dilation
 - [x] Rotation
-- [ ] Add getVectorBuffer(). I think this is necessary? Not sure.
+- [x] Add getVectorBuffer(). I think this is necessary? Not sure.
 - [ ] Some stuffs...

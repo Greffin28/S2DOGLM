@@ -1,5 +1,9 @@
 package org.s2doglm.vector;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+
 import org.s2doglm.matrix.Matrix;
 
 public class Vec4 {
@@ -33,13 +37,22 @@ public class Vec4 {
 		}
 	}
 	
-	public void printVector() {
-		System.out.println("----------");
-		System.out.println(vec[0] + ", " + vec[1] + ", " + vec[2] + ", " + vec[3]);
+	public FloatBuffer getVectorBuffer() {
+		ByteBuffer byteBuffer = ByteBuffer.allocateDirect(vec.length * Float.BYTES);
+		byteBuffer.order(ByteOrder.nativeOrder());
+		FloatBuffer floatBuffer = byteBuffer.asFloatBuffer();
+		floatBuffer.put(vec);
+		floatBuffer.flip();
+		return floatBuffer;
 	}
 	
 	public float[] getVector() {
 		return vec;
+	}
+	
+	public void printVector() {
+		System.out.println("----------");
+		System.out.println(vec[0] + ", " + vec[1] + ", " + vec[2] + ", " + vec[3]);
 	}
 	
 }
