@@ -10,25 +10,25 @@ import java.nio.FloatBuffer;
  * Created to help me use matrix for 2D OpenGL.</br>
  * Containing several simple functions which doesn't contain anything related to Z axis.</br>
  * Or at least for now..
- * </br></br>
+ * </br>
  * <h3>About this class</h3>
- * Contain several simple functions like creating matrix for:
+ * Contain several simple functions to create:
  * <ul>
- * 	<li>Translation</li>
- * 	<li>Dilation</li>
- * 	<li>Rotation</li>
- * 	<li>Orthogonal projection</li>
+ * 	<li>Translation matrix</li>
+ * 	<li>Dilation matrix</li>
+ * 	<li>Rotation matrix</li>
+ * 	<li>Orthogonal projection matrix</li>
  * </ul>
- * </br></br>
+ * </br>
  * @author Greffin28
- * @see {@link org.s2doglm.vector Vec4}
+ * @see {@link org.s2doglm.vector.Vec4 Vec4}
  */
 public class Matrix {
 
 	private float[] mat;
 	
 	/**
-	 * Calling Matrix() will create an <b>identity</b> matrix.
+	 * Calling Matrix() as a constructor will create an <b>identity</b> matrix.
 	 */
 	public Matrix() {
 		mat = new float[]{
@@ -40,7 +40,7 @@ public class Matrix {
 	}
 	
 	/**
-	 * Calling Matrix(float[] f) will create a matrix with the given float array.
+	 * Calling Matrix(float[] f) as a constructor will create a matrix with the given float array.
 	 * The float array must be 4 * 4 in size in <b>column major</b> orientation.
 	 */
 	public Matrix(float[] f) {
@@ -200,7 +200,7 @@ public class Matrix {
 	}
 	
 	/**
-	 * Used to get the current matrix values as a FloatBuffer.</br></br>
+	 * Used to get the current matrix values as a FloatBuffer.
 	 * </br></br>
 	 * @return {@link java.nio.FloatBuffer FloatBuffer}
 	 */
@@ -214,9 +214,7 @@ public class Matrix {
 	}
 	
 	/**
-	 * Used to get the current matrix values as a float array.</br></br>
-	 * </br></br>
-	 * @return {@link java.nio.FloatBuffer FloatBuffer}
+	 * Used to get the current matrix values as a float array.
 	 */
 	public float[] getMatrix() {
 		return mat;
