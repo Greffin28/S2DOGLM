@@ -40,8 +40,7 @@ Here are the list of the class and functions:
 >   - Matrix mat = Matrix.---Matrix(...); (Yep, static functions)
 
 ### To do list
-- [x] Translation
-- [x] Dilation
-- [x] Rotation
-- [x] Add getVectorBuffer(). I think this is necessary? Not sure.
+- [x] Documentation for both classes.
+- [ ] Add some more useful stuff for Matrix.java
+- [ ] Add some more useful stuff for Vec4.java
 - [ ] Some stuffs...
