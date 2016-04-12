@@ -1,6 +1,6 @@
 # Simple 2D OpenGL Matrix (S2DOGLM)
 
-###### Still on-going!
+###### Still on-going! --- Progress is stopped right now, will add more features if i find something useful needed.
 
 ## What exactly is S2DOGLM?
 Simple 2D OpenGL Matrix or S2DOGLM. Created to help me to use matrix for 2D OpenGL in **Java**.
