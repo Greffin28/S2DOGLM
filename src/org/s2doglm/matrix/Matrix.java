@@ -73,14 +73,14 @@ public class Matrix {
 	 * Example of use:</br>
 	 * {@code Matrix mat = Matrix.simpleOrtho(0, 0, 600, 800);}
 	 * </br></br>
-	 * @param t Top side.
 	 * @param l Left side.
-	 * @param b Bottom side.
+	 * @param t Top side.
 	 * @param r Right side.
+	 * @param b Bottom side.
 	 * 
 	 * @return {@link org.s2doglm.matrix.Matrix Matrix}
 	 */
-	public static Matrix simpleOrtho(float t, float l, float b, float r) {
+	public static Matrix simpleOrtho(float l, float t, float r, float b) {
 		Matrix mat = new Matrix(new float[] {
 				2 / (r - l), 0.0f, 0.0f, -(r + l) / (r - l),
 				0.0f, -2 / (b - t), 0.0f, (b + t) / (b - t),
