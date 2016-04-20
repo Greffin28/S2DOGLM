@@ -96,6 +96,8 @@ public class Vec4 {
 	
 	/**
 	 * Used to get the current vector values as a float array.
+	 * </br></br>
+	 * @return float[]
 	 */
 	public float[] getVector() {
 		return vec;
