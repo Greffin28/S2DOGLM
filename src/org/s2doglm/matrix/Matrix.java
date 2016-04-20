@@ -68,6 +68,24 @@ public class Matrix {
 		}
 	}
 	
+	public void transform(Matrix matT) {
+		float[] tempmat = new float[4 * 4];
+		for (int y = 0; y < 4; y++) {
+			for (int x = 0; x < 4; x++) {
+				tempmat[x + y * 4] = mat[x + y * 4];
+				mat[x + y * 4] = 0;
+			}
+		}
+		for (int y = 0; y < 4; y++) {
+			for (int x = 0; x < 4; x++) {
+				for (int i = 0; i < 4; i++) {
+					mat[x + y * 4] += tempmat[x + i * 4] * matT.getMatrix()[i + y * 4];
+					if (x == 1 && y == 2) System.out.println(tempmat[x + i * 4] + " * " + matT.getMatrix()[i + y * 4]);
+				}
+			}
+		}
+	}
+	
 	/**
 	 * Simple orthogonal matrix which doesn't interfere with Z axis.</br></br>
 	 * Example of use:</br>
