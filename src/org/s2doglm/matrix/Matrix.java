@@ -238,6 +238,8 @@ public class Matrix {
 	
 	/**
 	 * Used to get the current matrix values as a float array.
+	 * </br></br>
+	 * @return float[]
 	 */
 	public float[] getMatrix() {
 		return mat;
