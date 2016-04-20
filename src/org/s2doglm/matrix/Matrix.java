@@ -79,8 +79,7 @@ public class Matrix {
 		for (int y = 0; y < 4; y++) {
 			for (int x = 0; x < 4; x++) {
 				for (int i = 0; i < 4; i++) {
-					mat[x + y * 4] += tempmat[x + i * 4] * matT.getMatrix()[i + y * 4];
-					if (x == 1 && y == 2) System.out.println(tempmat[x + i * 4] + " * " + matT.getMatrix()[i + y * 4]);
+					mat[x + y * 4] += matT.getMatrix()[x + i * 4] * tempmat[i + y * 4];
 				}
 			}
 		}
