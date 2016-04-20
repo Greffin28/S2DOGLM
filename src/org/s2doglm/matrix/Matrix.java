@@ -68,6 +68,12 @@ public class Matrix {
 		}
 	}
 	
+	/**
+	 * Used to transform the current vector by multiplying a transformation matrix with the current vector itself.</br>
+	 * Example: if it is A.transform(B); Then it is matrix B * A.
+	 * </br></br>
+	 * @param mat {@link org.s2doglm.matrix.Matrix Matrix} that will be multiplied by the current vector.
+	 */
 	public void transform(Matrix matT) {
 		float[] tempmat = new float[4 * 4];
 		for (int y = 0; y < 4; y++) {
