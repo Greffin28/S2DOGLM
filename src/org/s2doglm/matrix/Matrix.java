@@ -223,6 +223,24 @@ public class Matrix {
 	}
 	
 	/**
+	 * Used to duplicate a matrix.</br></br>
+	 * Example of use:</br>
+	 * {@code Matrix mat = Matrix.duplicateMatrix(oldMat);}
+	 * </br></br>
+	 * @param oldmat {@link org.s2doglm.matrix.Matrix Matrix} to duplicate.
+	 * @return {@link org.s2doglm.matrix.Matrix Matrix}
+	 */
+	public static Matrix duplicateMatrix(Matrix oldmat) {
+		Matrix newMat;
+		float[] oldMatValue = new float[4 * 4];
+		for (int i = 0; i < 4 * 4; i++) {
+			oldMatValue[i] = oldmat.getMatrix()[i];
+		}
+		newMat = new Matrix(oldMatValue);
+		return newMat;
+	}
+	
+	/**
 	 * Used to get the current matrix values as a FloatBuffer.
 	 * </br></br>
 	 * @return {@link java.nio.FloatBuffer FloatBuffer}
