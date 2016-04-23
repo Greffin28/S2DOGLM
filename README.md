@@ -5,7 +5,9 @@
 ## What exactly is S2DOGLM?
 Simple 2D OpenGL Matrix or S2DOGLM. Created to help me to use matrix for 2D OpenGL in **Java**.
 This is for my personal use only, but feel free to use it if you want to.
-Anyway, i **believe** there's a better library out there somewhere. I made this because i didn't find any suitable for me, not only that but it's pretty challanging to make this. Not to mention, the functions here are the simplest one which **doesn't consist** of anything related to Z axis.
+Anyway, i **believe** there's a better library out there somewhere. I made this because i didn't find any suitable for me, not only that but it's pretty challanging to make this.
+
+**Updated**: Now some function has something to do with Z axis, like ortho() and Vec4()
 
 ## Contents
 Here are the list of the class and functions:
@@ -16,6 +18,7 @@ Here are the list of the class and functions:
     - `Matrix(float[] f)` *Create a matrix from the given float array.*
   * Functions
     - `transpose()` *Transpose the matrix.*
+    - `simpleOrtho(float t, float l, float b, float r)` *Like a normal orthogonal matrix.*
     - `simpleOrtho(float t, float l, float b, float r)` *Like a normal orthogonal matrix, but doesn't change the Z.*
     - `rotationMatrix(float X, float Y, float ang)` *Rotation relative to (X, Y).*
     - `oRotationMatrix(float ang)` *Rotation relative to (0, 0).*
