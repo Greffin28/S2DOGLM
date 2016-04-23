@@ -92,6 +92,32 @@ public class Matrix {
 	}
 	
 	/**
+	 * Simple orthogonal matrix.</br></br>
+	 * Example of use:</br>
+	 * {@code Matrix mat = Matrix.simpleOrtho(0, 0, 600, 800, 0, 10);}
+	 * </br></br>
+	 * @param l Left side.
+	 * @param t Top side.
+	 * @param r Right side.
+	 * @param b Bottom side.
+	 * @param n Z Near
+	 * @param f Z Far
+	 * 
+	 * @return {@link org.s2doglm.matrix.Matrix Matrix}
+	 */
+	public static Matrix ortho(float l, float t, float r, float b, float n, float f) {
+		Matrix mat = new Matrix(new float[] {
+				2 / (r - l), 0.0f, 0.0f, -(r + l) / (r - l),
+				0.0f, -2 / (b - t), 0.0f, (b + t) / (b - t),
+				0.0f, 0.0f, 2 / (f - n), -(f + n) / (f - n),
+				0.0f, 0.0f, 0.0f, 1.0f
+		});
+		
+		mat.transpose();
+		return mat;
+	}
+	
+	/**
 	 * Simple orthogonal matrix which doesn't interfere with Z axis.</br></br>
 	 * Example of use:</br>
 	 * {@code Matrix mat = Matrix.simpleOrtho(0, 0, 600, 800);}
