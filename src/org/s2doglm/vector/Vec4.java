@@ -111,4 +111,20 @@ public class Vec4 {
 		System.out.println(vec[0] + ", " + vec[1] + ", " + vec[2] + ", " + vec[3]);
 	}
 	
+	public float x() {
+		return vec[0];
+	}
+	
+	public float y() {
+		return vec[1];
+	}
+	
+	public float z() {
+		return vec[2];
+	}
+	
+	public float w() {
+		return vec[3];
+	}
+	
 }
