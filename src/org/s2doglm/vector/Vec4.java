@@ -21,7 +21,7 @@ import org.s2doglm.matrix.Matrix;
  */
 public class Vec4 {
 
-	private float[] vec;
+	public float x, y, z, w;
 	
 	/**
 	 * Calling Vec4() as a constructor will create a vector with the following coordinates:</br>
@@ -31,7 +31,10 @@ public class Vec4 {
 	 * {@code w = 1.0f;}
 	 */
 	public Vec4() {
-		vec = new float[] {0.0f, 0.0f, 0.0f, 1.0f};
+		x = 0.0f;
+		y = 0.0f;
+		z = 0.0f;
+		w = 1.0f;
 	}
 	
 	/**
@@ -43,7 +46,10 @@ public class Vec4 {
 	 * @param y Vertical coordinate.
 	 */
 	public Vec4(float x, float y) {
-		vec = new float[] {x, y, 0.0f, 1.0f};
+		this.x = x;
+		this.y = y;
+		z = 0.0f;
+		w = 1.0f;
 	}
 	
 	/**
@@ -57,7 +63,10 @@ public class Vec4 {
 	 * @param z -
 	 */
 	public Vec4(float x, float y, float z) { //Probably useless as this is going to be used for 2D.
-		vec = new float[] {x, y, z, 1.0f};
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.w = 1.0f;
 	}
 	
 	/**
@@ -67,17 +76,19 @@ public class Vec4 {
 	 */
 	public void transform(Matrix mat) {
 		float[] matVal = mat.getMatrix();
-		float[] tempvec = new float[vec.length];
-		for (int i = 0; i < vec.length; i++) {
-			tempvec[i] = vec[i];
-			vec[i] = 0;
-		}
+		float[] vec = new float[4];
+		float[] tempvec = new float[] {x, y, z, w};
 		
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
 				vec[i] += matVal[i + j * 4] * tempvec[j];
  			}
 		}
+		
+		x = vec[0];
+		y = vec[1];
+		z = vec[2];
+		w = vec[3];
 	}
 	
 	/**
@@ -86,10 +97,13 @@ public class Vec4 {
 	 * @return {@link java.nio.FloatBuffer FloatBuffer}
 	 */
 	public FloatBuffer getVectorBuffer() {
-		ByteBuffer byteBuffer = ByteBuffer.allocateDirect(vec.length * Float.BYTES);
+		ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * Float.BYTES);
 		byteBuffer.order(ByteOrder.nativeOrder());
 		FloatBuffer floatBuffer = byteBuffer.asFloatBuffer();
-		floatBuffer.put(vec);
+		floatBuffer.put(x);
+		floatBuffer.put(y);
+		floatBuffer.put(z);
+		floatBuffer.put(w);
 		floatBuffer.flip();
 		return floatBuffer;
 	}
@@ -100,6 +114,7 @@ public class Vec4 {
 	 * @return float[]
 	 */
 	public float[] getVector() {
+		float[] vec = new float[] {x, y, z, w};
 		return vec;
 	}
 	
@@ -108,23 +123,7 @@ public class Vec4 {
 	 */
 	public void printVector() {
 		System.out.println("----------");
-		System.out.println(vec[0] + ", " + vec[1] + ", " + vec[2] + ", " + vec[3]);
-	}
-	
-	public float x() {
-		return vec[0];
-	}
-	
-	public float y() {
-		return vec[1];
-	}
-	
-	public float z() {
-		return vec[2];
-	}
-	
-	public float w() {
-		return vec[3];
+		System.out.println(x + ", " + y + ", " + z + ", " + w);
 	}
 	
 }
